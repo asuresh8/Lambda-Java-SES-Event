@@ -4,6 +4,7 @@ import com.amazonaws.services.lambda.runtime.events.SNSEvent;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.joda.JodaModule;
 
 import java.io.IOException;
 
@@ -21,6 +22,7 @@ public class SESHandler implements RequestHandler<SNSEvent, SESEvent> {
     public SESEvent handleRequest(SNSEvent request, Context context) {
 
         ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JodaModule());
         try {
             SESEvent sesEvent = mapper.readValue(request.getRecords().get(0).getSNS().getMessage(), SESEvent.class);
             System.out.println("Received mail from: " + sesEvent.getMail().getSource());

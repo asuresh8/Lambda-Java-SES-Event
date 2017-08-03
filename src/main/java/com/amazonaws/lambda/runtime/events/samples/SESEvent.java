@@ -13,6 +13,8 @@
 
 package com.amazonaws.lambda.runtime.events.samples;
 
+import org.joda.time.DateTime;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -454,7 +456,7 @@ public class SESEvent implements Serializable, Cloneable {
      */
     public static class Mail implements Serializable, Cloneable {
 
-        private String timestamp;
+        private DateTime timestamp;
         private String messageId;
         private String source;
         private String sourceArn;
@@ -469,7 +471,7 @@ public class SESEvent implements Serializable, Cloneable {
          * get timestamp
          * @return timestamp that message was sent
          */
-        public String getTimestamp() {
+        public DateTime getTimestamp() {
             return this.timestamp;
         }
 
@@ -477,7 +479,7 @@ public class SESEvent implements Serializable, Cloneable {
          * set timestamp of message
          * @param timestamp DAteTime of message
          */
-        public void setTimestamp(String timestamp) {
+        public void setTimestamp(DateTime timestamp) {
             this.timestamp = timestamp;
         }
 
@@ -485,7 +487,7 @@ public class SESEvent implements Serializable, Cloneable {
          * @param timestamp Date
          * @return Mail
          */
-        public Mail withTimestamp(String timestamp) {
+        public Mail withTimestamp(DateTime timestamp) {
             setTimestamp(timestamp);
             return this;
         }
@@ -819,7 +821,7 @@ public class SESEvent implements Serializable, Cloneable {
             try {
                 return (Mail) super.clone();
             } catch (CloneNotSupportedException e) {
-                throw new IllegalStateException("Got a CloneNotSupportedException timestamp Object.clone() ", e);
+                throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() ", e);
             }
         }
 
@@ -1017,7 +1019,7 @@ public class SESEvent implements Serializable, Cloneable {
         private String bounceType;
         private String bounceSubType;
         private List<BounceRecipient> bouncedRecipients;
-        private String timestamp;
+        private DateTime timestamp;
         private String feedbackId;
         private String remoteMtaIp;
         private String reportingMta;
@@ -1101,7 +1103,7 @@ public class SESEvent implements Serializable, Cloneable {
          * get timestampe
          * @return String when bounce happened
          */
-        public String getTimestamp() {
+        public DateTime getTimestamp() {
             return this.timestamp;
         }
 
@@ -1109,7 +1111,7 @@ public class SESEvent implements Serializable, Cloneable {
          * set timestamp when bounce happened
          * @param timestamp String when bounce happened
          */
-        public void setTimestamp(String timestamp) {
+        public void setTimestamp(DateTime timestamp) {
             this.timestamp = timestamp;
         }
 
@@ -1117,7 +1119,7 @@ public class SESEvent implements Serializable, Cloneable {
          * @param timestamp timestamp of bounce
          * @return Bounce
          */
-        public Bounce withTimestamp(String timestamp) {
+        public Bounce withTimestamp(DateTime timestamp) {
             setTimestamp(timestamp);
             return this;
         }
@@ -1288,7 +1290,7 @@ public class SESEvent implements Serializable, Cloneable {
             try {
                 return (Bounce) super.clone();
             } catch (CloneNotSupportedException e) {
-                throw new IllegalStateException("Got a CloneNotSupportedException timestamp Object.clone() ", e);
+                throw new IllegalStateException("Got a CloneNotSupportedException Object.clone() ", e);
             }
         }
 
@@ -1379,7 +1381,7 @@ public class SESEvent implements Serializable, Cloneable {
     public static class Complaint implements Serializable, Cloneable {
 
         private List<ComplainedRecipient> complainedRecipients;
-        private String timestamp;
+        private DateTime timestamp;
         private String feedbackId;
         private String userAgent;
         private String complaintFeedbackType;
@@ -1414,7 +1416,7 @@ public class SESEvent implements Serializable, Cloneable {
          * return datetime that message was sent at
          * @return String when message was sent
          */
-        public String getTimestamp() {
+        public DateTime getTimestamp() {
             return this.timestamp;
         }
 
@@ -1422,7 +1424,7 @@ public class SESEvent implements Serializable, Cloneable {
          * set tinestamp on complaint message
          * @param timestamp timestamp when message was sent
          */
-        public void setTimestamp(String timestamp) {
+        public void setTimestamp(DateTime timestamp) {
             this.timestamp = timestamp;
         }
 
@@ -1430,7 +1432,7 @@ public class SESEvent implements Serializable, Cloneable {
          * @param timestamp timestamp
          * @return Complaint
          */
-        public Complaint withTimestamp(String timestamp) {
+        public Complaint withTimestamp(DateTime timestamp) {
             setTimestamp(timestamp);
             return this;
         }
@@ -1625,7 +1627,7 @@ public class SESEvent implements Serializable, Cloneable {
     }
 
     public static class Delivery implements Serializable, Cloneable {
-        private String timestamp;
+        private DateTime timestamp;
         private Integer processingTimeMillis;
         private List<String> recipients;
         private String smtpResponse;
@@ -1636,7 +1638,7 @@ public class SESEvent implements Serializable, Cloneable {
          * return timestamp of message
          * @return Date with timestamp
          */
-        public String getTimestamp() {
+        public DateTime getTimestamp() {
             return this.timestamp;
         }
 
@@ -1644,7 +1646,7 @@ public class SESEvent implements Serializable, Cloneable {
          * set timestamp of message
          * @param timestamp Date of message
          */
-        public void setTimestamp(String timestamp) {
+        public void setTimestamp(DateTime timestamp) {
             this.timestamp = timestamp;
         }
 
@@ -1652,7 +1654,7 @@ public class SESEvent implements Serializable, Cloneable {
          * @param timestamp Date of message
          * @return Delivery object
          */
-        public Delivery withTimestamp(String timestamp) {
+        public Delivery withTimestamp(DateTime timestamp) {
             setTimestamp(timestamp);
             return this;
         }
@@ -1865,7 +1867,7 @@ public class SESEvent implements Serializable, Cloneable {
             try {
                 return (Delivery) super.clone();
             } catch (CloneNotSupportedException e) {
-                throw new IllegalStateException("Got a CloneNotSupportedException timestamp Object.clone() ", e);
+                throw new IllegalStateException("Got a CloneNotSupportedException Object.clone() ", e);
             }
         }
 
