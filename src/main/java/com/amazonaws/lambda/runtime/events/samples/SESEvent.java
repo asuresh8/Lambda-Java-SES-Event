@@ -11,11 +11,10 @@
  * and limitations under the License.
  */
 
-package com.amazonaws.services.lambda.runtime.events;
+package com.amazonaws.lambda.runtime.events.samples;
 
 import java.io.Serializable;
 import java.util.List;
-
 
 /**
  * NOTE:
@@ -23,7 +22,7 @@ import java.util.List;
  * within the SNS event to an SES object. Example is posted on the AWS documentation
  * Represents an SES Event
  */
-public class SESEvent implements Serializable, Cloneable{
+public class SESEvent implements Serializable, Cloneable {
 
     /**
      * Common headers in an ses message
@@ -327,7 +326,7 @@ public class SESEvent implements Serializable, Cloneable{
             try {
                 return (CommonHeaders) super.clone();
             } catch (CloneNotSupportedException e) {
-                throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
+                throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() ", e);
             }
         }
 
@@ -445,7 +444,7 @@ public class SESEvent implements Serializable, Cloneable{
             try {
                 return (Header) super.clone();
             } catch (CloneNotSupportedException e) {
-                throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
+                throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() ", e);
             }
         }
     }
@@ -453,7 +452,7 @@ public class SESEvent implements Serializable, Cloneable{
     /**
      * represents an SES mail object
      */
-    public static class Mail implements Serializable, Cloneable{
+    public static class Mail implements Serializable, Cloneable {
 
         private String timestamp;
         private String messageId;
@@ -820,7 +819,191 @@ public class SESEvent implements Serializable, Cloneable{
             try {
                 return (Mail) super.clone();
             } catch (CloneNotSupportedException e) {
-                throw new IllegalStateException("Got a CloneNotSupportedException timestamp Object.clone() " + "even though we're Cloneable!", e);
+                throw new IllegalStateException("Got a CloneNotSupportedException timestamp Object.clone() ", e);
+            }
+        }
+
+    }
+
+    /**
+     * Represents BounceRecipient
+     */
+    public static class BounceRecipient implements Serializable, Cloneable {
+        private String emailAddress;
+        private String action;
+        private String status;
+        private String diagnosticCode;
+
+        /**
+         * get email address
+         * @return email address
+         */
+        public String getEmailAddress() {
+            return this.emailAddress;
+        }
+
+        /**
+         * set email address
+         * @param emailAddress String email address
+         */
+        public void setEmailAddress(String emailAddress) {
+            this.emailAddress = emailAddress;
+        }
+
+        /**
+         * @param emailAddress email address bounced
+         * @return BounceRecipient
+         */
+        public BounceRecipient withEmailAddress(String emailAddress) {
+            setEmailAddress(emailAddress);
+            return this;
+        }
+
+        /**
+         * get action
+         * @return String action
+         */
+        public String getAction() {
+            return this.action;
+        }
+
+        /**
+         * set action
+         * @param action String action
+         */
+        public void setAction(String action) {
+            this.action = action;
+        }
+
+        /**
+         * @param action action
+         * @return BounceRecipient
+         */
+        public BounceRecipient withAction(String action) {
+            setAction(action);
+            return this;
+        }
+
+        /**
+         * get status
+         * @return String status
+         */
+        public String getStatus() {
+            return this.status;
+        }
+
+        /**
+         * set status
+         * @param status String status
+         */
+        public void setStatus(String status) {
+            this.status = status;
+        }
+
+        /**
+         * @param status bounce recipient status
+         * @return BounceRecipient
+         */
+        public BounceRecipient withStatus(String status) {
+            setStatus(status);
+            return this;
+        }
+
+        /**
+         * get diagnostic code
+         * @return String diagnostic code
+         */
+        public String getDiagnosticCode() {
+            return diagnosticCode;
+        }
+
+        /**
+         * set diagnostic code
+         * @param diagnosticCode String diagnostic code
+         */
+        public void setDiagnosticCode(String diagnosticCode) {
+            this.diagnosticCode = diagnosticCode;
+        }
+
+        /**
+         * @param diagnosticCode diagnostic code
+         * @return BounceRecipient
+         */
+        public BounceRecipient withDiagnosticCode(String diagnosticCode) {
+            setDiagnosticCode(diagnosticCode);
+            return this;
+        }
+
+        /**
+         * Returns a string representation of this object; useful for testing and debugging.
+         *
+         * @return A string representation of this object.
+         *
+         * @see Object#toString()
+         */
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            sb.append("{");
+            if (getEmailAddress() != null)
+                sb.append("emailAddress: ").append(getEmailAddress()).append(",");
+            if (getAction() != null)
+                sb.append("action: ").append(getAction()).append(",");
+            if (getStatus() != null)
+                sb.append("status: ").append(getStatus()).append(",");
+            if (getDiagnosticCode() != null)
+                sb.append("diagnosticCode: ").append(getDiagnosticCode());
+            sb.append("}");
+            return sb.toString();
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj)
+                return true;
+            if (obj == null)
+                return false;
+
+            if (obj instanceof BounceRecipient == false)
+                return false;
+            BounceRecipient other = (BounceRecipient) obj;
+            if (other.getEmailAddress() == null ^ this.getEmailAddress() == null)
+                return false;
+            if (other.getEmailAddress() != null && other.getEmailAddress().equals(this.getEmailAddress()) == false)
+                return false;
+            if (other.getAction() == null ^ this.getAction() == null)
+                return false;
+            if (other.getAction() != null && other.getAction().equals(this.getAction()) == false)
+                return false;
+            if (other.getStatus() == null ^ this.getStatus() == null)
+                return false;
+            if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
+                return false;
+            if (other.getDiagnosticCode() == null ^ this.getDiagnosticCode() == null)
+                return false;
+            if (other.getDiagnosticCode() != null && other.getDiagnosticCode().equals(this.getDiagnosticCode()) == false)
+                return false;
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            final int prime = 31;
+            int hashCode = 1;
+
+            hashCode = prime * hashCode + ((getEmailAddress() == null) ? 0 : getEmailAddress().hashCode());
+            hashCode = prime * hashCode + ((getAction() == null) ? 0 : getAction().hashCode());
+            hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
+            hashCode = prime * hashCode + ((getDiagnosticCode() == null) ? 0 : getDiagnosticCode().hashCode());
+            return hashCode;
+        }
+
+        @Override
+        public BounceRecipient clone() {
+            try {
+                return (BounceRecipient) super.clone();
+            } catch (CloneNotSupportedException e) {
+                throw new IllegalStateException("Got a CloneNotSupportedException emailAddress Object.clone() " + "even though we're Cloneable!", e);
             }
         }
 
@@ -831,190 +1014,9 @@ public class SESEvent implements Serializable, Cloneable{
      */
     public static class Bounce implements Serializable, Cloneable {
 
-        public static class Recipient implements Serializable, Cloneable {
-            private String emailAddress;
-            private String action;
-            private String status;
-            private String diagnosticCode;
-
-            /**
-             * get email address
-             * @return email address
-             */
-            public String getEmailAddress() {
-                return this.emailAddress;
-            }
-
-            /**
-             * set email address
-             * @param emailAddress String email address
-             */
-            public void setEmailAddress(String emailAddress) {
-                this.emailAddress = emailAddress;
-            }
-
-            /**
-             * @param emailAddress email address bounced
-             * @return Recipient
-             */
-            public Recipient withEmailAddress(String emailAddress) {
-                setEmailAddress(emailAddress);
-                return this;
-            }
-
-            /**
-             * get action
-             * @return String action
-             */
-            public String getAction() {
-                return this.action;
-            }
-
-            /**
-             * set action
-             * @param action String action
-             */
-            public void setAction(String action) {
-                this.action = action;
-            }
-
-            /**
-             * @param action action
-             * @return Recipient
-             */
-            public Recipient withAction(String action) {
-                setAction(action);
-                return this;
-            }
-
-            /**
-             * get status
-             * @return String status
-             */
-            public String getStatus() {
-                return this.status;
-            }
-
-            /**
-             * set status
-             * @param status String status
-             */
-            public void setStatus(String status) {
-                this.status = status;
-            }
-
-            /**
-             * @param status bounce recipient status
-             * @return Recipient
-             */
-            public Recipient withStatus(String status) {
-                setStatus(status);
-                return this;
-            }
-
-            /**
-             * get diagnostic code
-             * @return String diagnostic code
-             */
-            public String getDiagnosticCode() {
-                return diagnosticCode;
-            }
-
-            /**
-             * set diagnostic code
-             * @param diagnosticCode String diagnostic code
-             */
-            public void setDiagnosticCode(String diagnosticCode) {
-                this.diagnosticCode = diagnosticCode;
-            }
-
-            /**
-             * @param diagnosticCode diagnostic code
-             * @return Recipient
-             */
-            public Recipient withDiagnosticCode(String diagnosticCode) {
-                setDiagnosticCode(diagnosticCode);
-                return this;
-            }
-
-            /**
-             * Returns a string representation of this object; useful for testing and debugging.
-             *
-             * @return A string representation of this object.
-             *
-             * @see Object#toString()
-             */
-            @Override
-            public String toString() {
-                StringBuilder sb = new StringBuilder();
-                sb.append("{");
-                if (getEmailAddress() != null)
-                    sb.append("emailAddress: ").append(getEmailAddress()).append(",");
-                if (getAction() != null)
-                    sb.append("action: ").append(getAction()).append(",");
-                if (getStatus() != null)
-                    sb.append("status: ").append(getStatus()).append(",");
-                if (getDiagnosticCode() != null)
-                    sb.append("diagnosticCode: ").append(getDiagnosticCode());
-                sb.append("}");
-                return sb.toString();
-            }
-
-            @Override
-            public boolean equals(Object obj) {
-                if (this == obj)
-                    return true;
-                if (obj == null)
-                    return false;
-
-                if (obj instanceof Recipient == false)
-                    return false;
-                Recipient other = (Recipient) obj;
-                if (other.getEmailAddress() == null ^ this.getEmailAddress() == null)
-                    return false;
-                if (other.getEmailAddress() != null && other.getEmailAddress().equals(this.getEmailAddress()) == false)
-                    return false;
-                if (other.getAction() == null ^ this.getAction() == null)
-                    return false;
-                if (other.getAction() != null && other.getAction().equals(this.getAction()) == false)
-                    return false;
-                if (other.getStatus() == null ^ this.getStatus() == null)
-                    return false;
-                if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
-                    return false;
-                if (other.getDiagnosticCode() == null ^ this.getDiagnosticCode() == null)
-                    return false;
-                if (other.getDiagnosticCode() != null && other.getDiagnosticCode().equals(this.getDiagnosticCode()) == false)
-                    return false;
-                return true;
-            }
-
-            @Override
-            public int hashCode() {
-                final int prime = 31;
-                int hashCode = 1;
-
-                hashCode = prime * hashCode + ((getEmailAddress() == null) ? 0 : getEmailAddress().hashCode());
-                hashCode = prime * hashCode + ((getAction() == null) ? 0 : getAction().hashCode());
-                hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
-                hashCode = prime * hashCode + ((getDiagnosticCode() == null) ? 0 : getDiagnosticCode().hashCode());
-                return hashCode;
-            }
-
-            @Override
-            public Recipient clone() {
-                try {
-                    return (Recipient) super.clone();
-                } catch (CloneNotSupportedException e) {
-                    throw new IllegalStateException("Got a CloneNotSupportedException emailAddress Object.clone() " + "even though we're Cloneable!", e);
-                }
-            }
-
-        }
-
         private String bounceType;
         private String bounceSubType;
-        private List<Recipient> bouncedRecipients;
+        private List<BounceRecipient> bouncedRecipients;
         private String timestamp;
         private String feedbackId;
         private String remoteMtaIp;
@@ -1074,7 +1076,7 @@ public class SESEvent implements Serializable, Cloneable{
          * get bounced recipients
          * @return List of recipients
          */
-        public List<Recipient> getBouncedRecipients() {
+        public List<BounceRecipient> getBouncedRecipients() {
             return this.bouncedRecipients;
         }
 
@@ -1082,7 +1084,7 @@ public class SESEvent implements Serializable, Cloneable{
          * set bounced recipients
          * @param bouncedRecipients List of recipients
          */
-        public void setBouncedRecipients(List<Recipient> bouncedRecipients) {
+        public void setBouncedRecipients(List<BounceRecipient> bouncedRecipients) {
             this.bouncedRecipients = bouncedRecipients;
         }
 
@@ -1090,7 +1092,7 @@ public class SESEvent implements Serializable, Cloneable{
          * @param bounceRecipients bounced recipients
          * @return Bounce
          */
-        public Bounce withBounceRecipients(List<Recipient> bounceRecipients) {
+        public Bounce withBounceRecipients(List<BounceRecipient> bounceRecipients) {
             setBouncedRecipients(bounceRecipients);
             return this;
         }
@@ -1286,7 +1288,89 @@ public class SESEvent implements Serializable, Cloneable{
             try {
                 return (Bounce) super.clone();
             } catch (CloneNotSupportedException e) {
-                throw new IllegalStateException("Got a CloneNotSupportedException timestamp Object.clone() " + "even though we're Cloneable!", e);
+                throw new IllegalStateException("Got a CloneNotSupportedException timestamp Object.clone() ", e);
+            }
+        }
+
+    }
+
+    /**
+     * class representing recipient of a complaint
+     */
+    public static class ComplainedRecipient implements Serializable, Cloneable {
+
+        private String emailAddress;
+
+        /**
+         * get email address
+         * @return String email address
+         */
+        public String getEmailAddress() {
+            return this.emailAddress;
+        }
+
+        /**
+         * set email address
+         * @param emailAddress String email address
+         */
+        public void setEmailAddress(String emailAddress) {
+            this.emailAddress = emailAddress;
+        }
+
+        public ComplainedRecipient withEmailAddress(String emailAddress) {
+            setEmailAddress(emailAddress);
+            return this;
+        }
+
+        /**
+         * Returns a string representation of this object; useful for testing and debugging.
+         *
+         * @return A string representation of this object.
+         *
+         * @see Object#toString()
+         */
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            sb.append("{");
+            if (getEmailAddress() != null)
+                sb.append("emailAddress: ").append(getEmailAddress());
+            sb.append("}");
+            return sb.toString();
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj)
+                return true;
+            if (obj == null)
+                return false;
+
+            if (obj instanceof ComplainedRecipient == false)
+                return false;
+            ComplainedRecipient other = (ComplainedRecipient) obj;
+            if (other.getEmailAddress() == null ^ this.getEmailAddress() == null)
+                return false;
+            if (other.getEmailAddress() != null && other.getEmailAddress().equals(this.getEmailAddress()) == false)
+                return false;
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            final int prime = 31;
+            int hashCode = 1;
+
+            hashCode = prime * hashCode + ((getEmailAddress() == null) ? 0 : getEmailAddress().hashCode());
+            return hashCode;
+        }
+
+        @Override
+        public ComplainedRecipient clone() {
+            try {
+                return (ComplainedRecipient) super.clone();
+            } catch (CloneNotSupportedException e) {
+                throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
             }
         }
 
@@ -1294,88 +1378,7 @@ public class SESEvent implements Serializable, Cloneable{
 
     public static class Complaint implements Serializable, Cloneable {
 
-        /**
-         * class representing recipient of a complaint
-         */
-        public static class Recipient implements Serializable, Cloneable {
-            private String emailAddress;
-
-            /**
-             * get email address
-             * @return String email address
-             */
-            public String getEmailAddress() {
-                return this.emailAddress;
-            }
-
-            /**
-             * set email address
-             * @param emailAddress String email address
-             */
-            public void setEmailAddress(String emailAddress) {
-                this.emailAddress = emailAddress;
-            }
-
-            public Recipient withEmailAddress(String emailAddress) {
-                setEmailAddress(emailAddress);
-                return this;
-            }
-
-            /**
-             * Returns a string representation of this object; useful for testing and debugging.
-             *
-             * @return A string representation of this object.
-             *
-             * @see Object#toString()
-             */
-            @Override
-            public String toString() {
-                StringBuilder sb = new StringBuilder();
-                sb.append("{");
-                if (getEmailAddress() != null)
-                    sb.append("emailAddress: ").append(getEmailAddress());
-                sb.append("}");
-                return sb.toString();
-            }
-
-            @Override
-            public boolean equals(Object obj) {
-                if (this == obj)
-                    return true;
-                if (obj == null)
-                    return false;
-
-                if (obj instanceof Recipient == false)
-                    return false;
-                Recipient other = (Recipient) obj;
-                if (other.getEmailAddress() == null ^ this.getEmailAddress() == null)
-                    return false;
-                if (other.getEmailAddress() != null && other.getEmailAddress().equals(this.getEmailAddress()) == false)
-                    return false;
-                return true;
-            }
-
-            @Override
-            public int hashCode() {
-                final int prime = 31;
-                int hashCode = 1;
-
-                hashCode = prime * hashCode + ((getEmailAddress() == null) ? 0 : getEmailAddress().hashCode());
-                return hashCode;
-            }
-
-            @Override
-            public Recipient clone() {
-                try {
-                    return (Recipient) super.clone();
-                } catch (CloneNotSupportedException e) {
-                    throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
-                }
-            }
-
-        }
-
-        private List<Recipient> complainedRecipients;
+        private List<ComplainedRecipient> complainedRecipients;
         private String timestamp;
         private String feedbackId;
         private String userAgent;
@@ -1384,9 +1387,9 @@ public class SESEvent implements Serializable, Cloneable{
 
         /**
          * return lis of complaint recipients
-         * @return List of Recipient
+         * @return List of BounceRecipient
          */
-        public List<Recipient> getComplainedRecipients() {
+        public List<ComplainedRecipient> getComplainedRecipients() {
             return this.complainedRecipients;
         }
 
@@ -1394,7 +1397,7 @@ public class SESEvent implements Serializable, Cloneable{
          * set complaint recipients
          * @param complainedRecipients List of Recipients
          */
-        public void setComplainedRecipients(List<Recipient> complainedRecipients) {
+        public void setComplainedRecipients(List<ComplainedRecipient> complainedRecipients) {
             this.complainedRecipients = complainedRecipients;
         }
 
@@ -1402,7 +1405,7 @@ public class SESEvent implements Serializable, Cloneable{
          * @param complainedRecipients complained recipients
          * @return Complaint
          */
-        public Complaint withComplainedRecipients(List<Recipient> complainedRecipients) {
+        public Complaint withComplainedRecipients(List<ComplainedRecipient> complainedRecipients) {
             setComplainedRecipients(complainedRecipients);
             return this;
         }
@@ -1615,7 +1618,7 @@ public class SESEvent implements Serializable, Cloneable{
             try {
                 return (Complaint) super.clone();
             } catch (CloneNotSupportedException e) {
-                throw new IllegalStateException("Got a CloneNotSupportedException timestamp Object.clone() " + "even though we're Cloneable!", e);
+                throw new IllegalStateException("Got a CloneNotSupportedException timestamp Object.clone() ", e);
             }
         }
 
@@ -1862,7 +1865,7 @@ public class SESEvent implements Serializable, Cloneable{
             try {
                 return (Delivery) super.clone();
             } catch (CloneNotSupportedException e) {
-                throw new IllegalStateException("Got a CloneNotSupportedException timestamp Object.clone() " + "even though we're Cloneable!", e);
+                throw new IllegalStateException("Got a CloneNotSupportedException timestamp Object.clone() ", e);
             }
         }
 
@@ -2076,7 +2079,7 @@ public class SESEvent implements Serializable, Cloneable{
         try {
             return (SESEvent) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException("Got a CloneNotSupportedException notificationType Object.clone() " + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException notificationType Object.clone() ", e);
         }
     }
 
